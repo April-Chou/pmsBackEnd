@@ -1,10 +1,17 @@
 package com.fdm.service;
 
+import com.fdm.domain.User;
+import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.stereotype.Service;
+
 /**
- * @Classname UserService
- * @Description TODO
- * @Version 1.0
- * @Date 2025/2/19 23:00
- * @author April Chou
- */public class UserService {
+* @author April Chou
+* @description 针对表【pms_users】的数据库操作Service
+* @createDate 2025-02-20 11:44:23
+*/
+@Service
+public interface UserService extends IService<User> {
+
+
+    User login(User user);
 }

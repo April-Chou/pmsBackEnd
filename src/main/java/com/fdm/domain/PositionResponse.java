@@ -1,6 +1,8 @@
 package com.fdm.domain;
+
 import lombok.Data;
 import org.springframework.stereotype.Component;
+
 import java.util.Map;
 
 
@@ -14,6 +16,6 @@ import java.util.Map;
 @Component
 @Data
 public class PositionResponse {
-    private Map<String, PositionData> response;
+    private Map<String, PositionDto> response;
 
 }

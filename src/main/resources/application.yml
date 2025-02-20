@@ -1,1 +1,16 @@
-spring.application.name=pmsBackEnd
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pmsdb
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.fdm.domain
+
+mybatis-plus:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.fdm.domain
+

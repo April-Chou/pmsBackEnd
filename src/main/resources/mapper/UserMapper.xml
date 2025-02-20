@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fdm.mapper.UserMapper">
-    <insert id="insertUser" parameterType="User">
-        INSERT INTO user (username, password)
-        VALUES (#{username}, #{password})
-    </insert>
 
-    <select id="findByUsername" parameterType="String" resultType="User">
-        SELECT * FROM user WHERE username = #{username}
+    <resultMap id="BaseResultMap" type="com.fdm.domain.User">
+            <id property="username" column="username" />
+            <result property="id" column="id" />
+            <result property="password" column="password" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        username,id,password
+    </sql>
+    <select id="getByUsernameAndPassword" resultType="com.fdm.domain.User">
+        SELECT * FROM pms_users WHERE username = #{username}
     </select>
 </mapper>

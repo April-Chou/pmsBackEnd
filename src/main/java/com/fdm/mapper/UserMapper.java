@@ -1,10 +1,22 @@
 package com.fdm.mapper;
 
+import com.fdm.domain.User;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Service;
+
 /**
- * @Classname UserMapper
- * @Description TODO
- * @Version 1.0
- * @Date 2025/2/19 22:59
- * @author April Chou
- */public class UserMapper {
+* @author April Chou
+* @description 针对表【pms_users】的数据库操作Mapper
+* @createDate 2025-02-20 11:44:23
+* @Entity com.fdm.domain.User
+*/
+@Mapper
+public interface UserMapper extends BaseMapper<User> {
+
+    User getByUsernameAndPassword(User user);
 }
+
+
+
+
