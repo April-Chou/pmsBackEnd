@@ -14,6 +14,6 @@
         username,id,password
     </sql>
     <select id="getByUsernameAndPassword" resultType="com.fdm.domain.User">
-        SELECT * FROM pms_users WHERE username = #{username}
+        SELECT * FROM pms_users WHERE username = #{username} and password = #{password}
     </select>
 </mapper>
