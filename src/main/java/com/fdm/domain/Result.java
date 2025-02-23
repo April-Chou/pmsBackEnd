@@ -36,7 +36,7 @@ public class Result {
 
     // 查询 失败响应
     public static Result error(String msg) {
-        return new Result(0, "error", null);
+        return new Result(0,msg, null);
     }
 
 }

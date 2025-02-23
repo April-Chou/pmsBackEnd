@@ -21,6 +21,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         this.userMapper = userMapper;
     }
 
+//    验证账户密码登录
     public User login(User user) {
         return userMapper.getByUsernameAndPassword(user);
     }

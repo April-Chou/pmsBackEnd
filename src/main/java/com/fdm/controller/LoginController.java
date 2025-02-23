@@ -3,11 +3,14 @@ package com.fdm.controller;
 import com.fdm.domain.Result;
 import com.fdm.domain.User;
 import com.fdm.service.UserService;
+import com.fdm.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author April Chou
@@ -27,7 +30,19 @@ public class LoginController {
     public Result login(@RequestBody User user) {
         log.info("Login User: {}", user);
         User loginUser = userService.login(user);
-        return loginUser != null?Result.success() : Result.error("login failed, username or password wrong. please try again");
+
+//        如果登陆成功，则生成令牌并下发令牌
+        if (loginUser != null) {
+            String jwt = JwtUtil.generateJWT(Map.of("username", loginUser.getUsername(), "password", loginUser.getPassword()));
+            return Result.success(jwt);
+        }
+
+//        登录失败，则返回错误信息
+        else {
+            return Result.error("Username or Password incorrect");
+        }
+
+//        return loginUser != null?Result.success() : Result.error("login failed, username or password wrong. please try again");
 
     }
 }
